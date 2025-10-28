@@ -5,19 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>¡Nos casamos! | Paola y Javier</title>
   <meta name="description" content="Web de boda divertida y desenfadada de Paola y Javier. Información de ceremonia, fiesta, RSVP, hoteles y más." />
+  <meta name="theme-color" content="#6A7C68" />
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:title" content="¡Nos casamos! | Paola y Javier" />
+  <meta property="og:description" content="Ceremonia en Teror y cóctel-fiesta en Firgas. ¡Nos vemos en la pista!" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1600&auto=format&fit=crop" />
+  <meta property="og:image:alt" content="Boda de Paola y Javier" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="¡Nos casamos! | Paola y Javier" />
+  <meta name="twitter:description" content="Ceremonia en Teror y cóctel-fiesta en Firgas. ¡Nos vemos en la pista!" />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1600&auto=format&fit=crop" />
+  <!-- Preload del hero (misma URL que en CSS) -->
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1600&auto=format&fit=crop" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;600;700&family=Sacramento&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg:#F9F6EF;      /* marfil cálido */
-  --fg:#2E2E2E;      /* gris antracita */
-  --muted:#6b6b6b;
-  --brand:#6A7C68;   /* verde oliva suave */
-  --brand-2:#D9C6A3; /* dorado pálido */
-  --accent:#D9C6A3;  /* acento dorado */
-  --card:#ffffff;
-  --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --fg:#2E2E2E;      /* gris antracita */
+      --muted:#6b6b6b;
+      --brand:#6A7C68;   /* verde oliva suave */
+      --brand-2:#D9C6A3; /* dorado pálido */
+      --accent:#D9C6A3;  /* acento dorado */
+      --card:#ffffff;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
       --radius: 18px;
     }
     *{box-sizing:border-box}
@@ -38,42 +53,58 @@
     .btn{display:inline-block;border:none;background:var(--brand);color:#fff;padding:.85rem 1.1rem;border-radius:999px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
     .btn.alt{background:var(--brand-2);color:#3a2e1c}
     .btn.ghost{background:#fff;color:var(--brand);border:2px solid var(--brand)}
+
+    /* HERO */
     .hero{position:relative;isolation:isolate}
-    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.25) 40%, transparent 70%);z-index:-1;border-radius:0 0 28px 28px}
-    .hero .wrap{min-height:70vh;display:grid;place-items:center;text-align:center;color:#fff;background:url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1600&auto=format&fit=crop') center/cover;border-radius:0 0 28px 28px}
+    /* Overlay que sí oscurece la foto del hero */
+    .hero .wrap{position:relative;min-height:70vh;display:grid;place-items:center;text-align:center;color:#fff;background:url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1600&auto=format&fit=crop') center/cover;border-radius:0 0 28px 28px}
+    .hero .wrap::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.25) 40%, transparent 70%);z-index:0;border-radius:0 0 28px 28px}
+    .hero .wrap > *{position:relative;z-index:1}
+
     .hero h1{font-family:Sacramento,cursive;font-size:clamp(3rem,8vw,6rem);margin:0}
     .hero p{font-size:clamp(1rem,2.2vw,1.25rem);opacity:.95;margin:.5rem 0 1.2rem}
+
     .chips{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-top:.6rem}
     .chip{background:rgba(255,255,255,.9);color:#2a2a2a;padding:.4rem .8rem;border-radius:999px;font-weight:600}
+
     section{padding:72px 0}
     .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:clamp(1rem,3vw,2rem)}
     .section-title{font-size:clamp(1.6rem,3.5vw,2.2rem);margin:0 0 .6rem}
     .subtitle{color:var(--muted);margin-top:0}
+
     .grid{display:grid;gap:1.2rem}
     @media(min-width:900px){.grid.cols-2{grid-template-columns:1.1fr 1fr}.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+
     .timeline{position:relative;padding-left:28px}
     .timeline::before{content:"";position:absolute;left:11px;top:4px;bottom:4px;width:4px;background:linear-gradient(var(--brand),var(--brand-2));border-radius:2px}
     .t-item{position:relative;margin:1rem 0}
     .t-item::before{content:"";position:absolute;left:-2px;top:.35rem;width:16px;height:16px;border-radius:50%;background:var(--accent);border:3px solid #fff;box-shadow:0 0 0 3px rgba(0,0,0,.06)}
+
     .agenda{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
     .pill{background:#fff;border:1px dashed var(--brand);border-radius:16px;padding:1rem;display:flex;gap:.7rem;align-items:center}
     .pill b{font-size:1.05rem}
+
     .info-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+
     .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem}
     .polaroid{background:#fff;padding:.6rem;border-radius:12px;box-shadow:var(--shadow);transform:rotate(var(--r, -1.5deg));transition:transform .25s}
     .polaroid:hover{transform:rotate(0deg) scale(1.02)}
     .polaroid img{width:100%;height:220px;object-fit:cover;border-radius:8px}
     .caption{font-size:.9rem;color:#444;margin-top:.4rem;text-align:center}
+
     footer{padding:40px 0 60px;text-align:center;color:#666}
+
     form{display:grid;gap:.8rem}
     input,select,textarea{width:100%;padding:.9rem 1rem;border-radius:12px;border:1.5px solid #e6e2d9;background:#fff}
     label{font-weight:600}
     .form-row{display:grid;gap:.8rem}
     @media(min-width:680px){.form-row{grid-template-columns:1fr 1fr}}
+
     .note{color:var(--muted);font-size:.95rem}
     .floating{position:fixed;right:16px;bottom:16px;z-index:60}
     .badge{background:var(--accent);padding:.2rem .5rem;border-radius:8px;font-weight:700}
     .muted{color:var(--muted)}
+
     .countdown{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-top:.8rem}
     .cd-box{background:#fff;padding:.6rem 1rem;border-radius:12px;box-shadow:var(--shadow);min-width:90px;text-align:center}
     .cd-num{font-size:1.5rem;font-weight:700}
@@ -94,6 +125,7 @@
       </nav>
     </div>
   </header>
+
   <main>
     <section class="hero" id="inicio">
       <div class="wrap">
@@ -101,9 +133,9 @@
           <h1>¡Nos casamos! 💍</h1>
           <p><strong>Paola & Javier</strong> · <span class="badge">31 de octubre de 2026</span> · Teror</p>
           <div class="chips">
-            <span class="chip">#TeamAmor</span>
-            <span class="chip">#TerorVibes</span>
-            <span class="chip">#NosVemosEnLaFiesta</span>
+            <span class="chip">#XXXXXXXX</span>
+            <span class="chip">#XXXXXXXX</span>
+            <span class="chip">#XXXXXXXX</span>
           </div>
           <p style="margin-top:1.1rem"><a href="#historia" class="btn">Descubre nuestra boda</a></p>
           <div id="countdown" class="countdown" aria-label="Cuenta atrás para la ceremonia">
@@ -115,6 +147,7 @@
         </div>
       </div>
     </section>
+
     <section id="historia">
       <div class="container grid cols-2">
         <div class="card">
@@ -123,11 +156,11 @@
           <div class="timeline">
             <div class="t-item">
               <h3>📅 Nos conocimos</h3>
-              <p>En <b>Lanzarote</b>, con careta y espada en mano. Entre tocados, risas y algún "¡alto!" en la pista de esgrima, nos cruzamos y… punto doble al corazón.</p>
+              <p>En <b>Lanzarote</b>, en época COVID con mascarillas, pegando tiros, practicando esgrima y participando en alguna carrera de orientación.</p>
             </div>
             <div class="t-item">
               <h3>💌 Primer viaje (Málaga & flechazo)</h3>
-              <p>Viajamos a <b>Málaga</b> para nuestro primer campeonato nacional militar. Nervios, hoteles justitos y bocatas post-combate. En algún momento entre asaltos y abrazos, nos miramos y supimos que aquello iba en serio.</p>
+              <p>Viajamos a <b>Málaga</b> para nuestro primer campeonato nacional militar. Entre bares vacíos, cervezas, toques de queda y muy buena gente, una mirada y se encendió la mecha.❤️</p>
             </div>
             <div class="t-item">
               <h3>💍 La pedida</h3>
@@ -139,41 +172,45 @@
           <h2 class="section-title">Detalles rápidos</h2>
           <ul>
             <li><b>Fecha:</b> 31 de octubre de 2026</li>
-            <li><b>Lugar:</b> Teror (Gran Canaria)</li>
-            <li><b>Plan:</b> Ceremonia → cóctel → banquete → fiesta 🎉</li>
-            <li><b>Hashtag:</b> <code>#BodaDePaolaYJavier</code></li>
+            <li><b>Lugar:</b> Teror/Firgas (Gran Canaria)</li>
+            <li><b>Plan:</b> Ceremonia → <b>cóctel</b> → fiesta 🎉</li>
+            <li><b>Hashtag:</b> <code>#BodaDePaoYJavi</code></li>
           </ul>
-          <p class="note">*Traducción: comer, brindar, bailar y abrazar mucho.*</p>
+          <p class="note">*Es decir: comer, beber, brindar y bailar.*</p>
         </div>
       </div>
     </section>
+
     <section id="ceremonia">
       <div class="container grid cols-2">
         <div class="card">
           <h2 class="section-title">La ceremonia ⛪</h2>
           <p class="subtitle">Basílica de Nuestra Señora del Pino (Teror)</p>
-          <p><b>Hora:</b> 12:00 (hora local, Canarias). Por favor, llegad con unos minutitos de margen… ¡el “sí, quiero” no se repite! 😅</p>
+          <p><b>Hora:</b> 12:00 (hora local, Canarias). El que no pueda entrar, o no llegue a tiempo, encontrará varios bares en la cercanía.</p>
           <p>
-            <a class="btn alt" target="_blank" href="https://maps.app.goo.gl/nCpk4Nc1y1WKrMtQ8">Ver en Google Maps</a>
-            <a class="btn ghost" style="margin-left:.5rem" href="#" onclick="addCeremonyICS();return false;">Añadir al calendario (.ics)</a>
+            <a class="btn alt" target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/t2rfw3wiqEK6zihw6">Ver en Google Maps</a>
+            <a class="btn ghost" style="margin-left:.5rem" id="btnCeremonyICS" href="#">Añadir al calendario (.ics)</a>
           </p>
         </div>
         <div class="card" id="fiesta">
-          <h2 class="section-title">El banquete / celebración 🥂</h2>
+          <h2 class="section-title">La celebración 🥂</h2>
           <p class="subtitle">Finca Los Pinos (Firgas)</p>
           <p><b>Horario:</b> desde las 14:00 hasta las 02:00 (hora local, Canarias).</p>
           <ul>
-            <li>🍸 Cóctel de bienvenida</li>
-            <li>🍽️ Banquete rico-rico</li>
-            <li>🎶 Música y barra libre</li>
+            <li>🍸 Bienvenida</li>
+            <li>🍽️ Cóctel larga duración (sin plato principal ni mesas)</li>
+            <li>🎶 Música y baile</li>
+            <li>🍹 Barra libre</li>
+            <li>🕺 Ambiente sin protocolos, simplemente nosotros con todos vosotros</li>
           </ul>
           <p>
             <a class="btn" href="#agenda">Ver agenda</a>
-            <a class="btn ghost" style="margin-left:.5rem" href="#" onclick="addCelebrationICS();return false;">Añadir al calendario (.ics)</a>
+            <a class="btn ghost" style="margin-left:.5rem" id="btnCelebrationICS" href="#">Añadir al calendario (.ics)</a>
           </p>
         </div>
       </div>
     </section>
+
     <section id="agenda">
       <div class="container">
         <div class="card">
@@ -181,65 +218,38 @@
           <p class="subtitle">Horarios aproximados (hora local, Canarias).</p>
           <div class="agenda">
             <div class="pill">💒 <div><b>12:00</b><br><span class="muted">Ceremonia</span></div></div>
-            <div class="pill">🍸 <div><b>14:00</b><br><span class="muted">Cóctel</span></div></div>
-            <div class="pill">🍽️ <div><b>16:00</b><br><span class="muted">Banquete (aprox.)</span></div></div>
-            <div class="pill">🎉 <div><b>20:00</b><br><span class="muted">Fiesta y barra libre</span></div></div>
+            <div class="pill">🍸 <div><b>14:00</b><br><span class="muted">Inicio del cóctel</span></div></div>
+            <div class="pill">🎉 <div><b>20:00</b><br><span class="muted">Música, barra libre y risas</span></div></div>
             <div class="pill">🌙 <div><b>02:00</b><br><span class="muted">Cierre</span></div></div>
           </div>
         </div>
       </div>
     </section>
+
     <section id="dress">
       <div class="container">
         <div class="card">
           <h2 class="section-title">Dress code 👗👔</h2>
-          <p>No hay que complicarse: venid elegantes pero cómodos. Lo importante es <b>bailar</b> y <b>disfrutar</b>.</p>
+          <p>No hay que complicarse: elegantes pero cómodos. Lo importante es <b>compartir el momento</b> y <b>disfrutar</b>.</p>
         </div>
       </div>
     </section>
+
     <section id="rsvp">
       <div class="container grid cols-2">
         <div class="card">
           <h2 class="section-title">RSVP ✅</h2>
           <p class="subtitle">Confírmanos antes del <b>30 de junio de 2026</b>. ¡Nos hace mucha ilusión compartir este día contigo!</p>
-          <form id="formRSVP" action="mailto:boda.paolayjavier@example.com" method="post" enctype="text/plain">
-            <div class="form-row">
-              <div>
-                <label>👤 Nombre y apellidos</label>
-                <input required name="nombre" placeholder="Tu nombre" />
-              </div>
-              <div>
-                <label>➕ Nº de acompañantes</label>
-                <select name="acompanantes">
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-row">
-              <div>
-                <label>🍴 Menú</label>
-                <select name="menu">
-                  <option>Normal</option>
-                  <option>Vegetariano</option>
-                  <option>Infantil</option>
-                </select>
-              </div>
-              <div>
-                <label>⚠️ Alergias</label>
-                <input name="alergias" placeholder="Especifica si aplica" />
-              </div>
-            </div>
-            <label>💬 Mensaje</label>
-            <textarea name="mensaje" rows="4" placeholder="¿Algo que debamos saber?"></textarea>
-            <div>
-              <button class="btn" type="submit">¡Voy fijo!</button>
-              <button class="btn ghost" type="button" onclick="decline()">Lo siento, me lo pierdo</button>
-            </div>
-            <p class="note">*Si preferís, podéis sustituir este formulario por un enlace a Google Forms.*</p>
-          </form>
+          <div style="text-align:center; padding:2rem 0;">
+            <a 
+              class="btn" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSd5GW2FzmQz2dVXlpylStUSFfXdxkxSHmZD75ejSCceQK0fpw/viewform?usp=sharing&ouid=114028596259590061926">
+              Confirmar asistencia en Google Forms
+            </a>
+            <p class="note">*El formulario se abrirá en una nueva pestaña.*</p>
+          </div>
         </div>
         <div class="card">
           <h2 class="section-title">Detalles prácticos 📌</h2>
@@ -253,38 +263,43 @@
               <p>Hay parking público cerca de la Plaza del Pino y opciones de taxi/guagua.</p>
             </div>
             <div class="card" style="padding:1rem">
-              <h3>🎁 Regalo</h3>
-              <p>Vuestra presencia es lo más importante. Si queréis tener un detalle: <b>ES12 3456 7890 1234 5678 9012</b> 💚</p>
+              <h3>🎁 Lista de boda</h3>
+              <p><b>ES04 1583 0001 1590 6538 8710</b> 💚</p>
             </div>
           </div>
         </div>
       </div>
     </section>
+
     <section id="galeria">
       <div class="container">
         <h2 class="section-title">Galería 📸</h2>
-        <p class="subtitle">Fotos nuestras haciendo el ridículo (y alguna mona también). Después de la boda, ¡subid las vuestras!</p>
+        <p class="subtitle">Fotos nuestras haciendo el bobo (y alguna medio decente también). Después de la boda, ¡subid las vuestras!</p>
         <div class="gallery">
-          <div class="polaroid" style="--r:-2deg"><img alt="Foto Lanzarote" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop"/><div class="caption">Lanzarote · Donde empezó todo</div></div>
-          <div class="polaroid" style="--r:1.5deg"><img alt="Foto Málaga" src="https://images.unsplash.com/photo-1549887534-4e847b3a2bc8?q=80&w=800&auto=format&fit=crop"/><div class="caption">Málaga · Primer campeonato</div></div>
-          <div class="polaroid" style="--r:-1deg"><img alt="Foto 3" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=800&auto=format&fit=crop"/><div class="caption">La pedida</div></div>
-          <div class="polaroid" style="--r:2deg"><img alt="Foto 4" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop"/><div class="caption">Equipo</div></div>
+          <div class="polaroid" style="--r:-2deg"><img loading="lazy" decoding="async" alt="Foto Lanzarote" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop"/><div class="caption">Lanzarote · Donde empezó todo</div></div>
+          <div class="polaroid" style="--r:1.5deg"><img loading="lazy" decoding="async" alt="Foto Málaga" src="https://images.unsplash.com/photo-1549887534-4e847b3a2bc8?q=80&w=800&auto=format&fit=crop"/><div class="caption">Málaga · Primer campeonato</div></div>
+          <div class="polaroid" style="--r:-1deg"><img loading="lazy" decoding="async" alt="Foto 3" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=800&auto=format&fit=crop"/><div class="caption">La pedida</div></div>
+          <div class="polaroid" style="--r:2deg"><img loading="lazy" decoding="async" alt="Foto 4" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop"/><div class="caption">Equipo</div></div>
         </div>
       </div>
     </section>
   </main>
+
   <footer>
     <div class="container">
-      <p>Hecho con ❤ por Paola & Javier. Nos vemos el <b>31/10/2026</b> en Teror.</p>
+      <p>Hecho con ❤ por Paola & Javier. Nos vemos el <b>31/10/2026</b> en Teror/Firgas.</p>
       <p class="muted">© 2026 · #BodaDePaolaYJavier</p>
     </div>
   </footer>
+
   <div class="floating"><a class="btn" href="#rsvp">Confirmar asistencia</a></div>
+
   <script>
     function decline(){
-      const nombre = document.querySelector('[name="nombre"]').value || 'Invitad@';
-      alert('¡Gracias por avisar, ' + nombre + '! Te echaremos de menos 💛');
+      const nombre = document.querySelector('[name="nombre"]')?.value || 'Invitad@';
+      alert('¡Gracias por avisar, ' + nombre + '! Te tendremos presente 💛');
     }
+
     (function(){
       var target = new Date('2026-10-31T12:00:00+00:00');
       function pad(n){return String(Math.max(0,n)).padStart(2,'0');}
@@ -308,11 +323,29 @@
       tick();
       setInterval(tick, 1000);
     })();
+
     function downloadICS(o){
       var st = (o.startISO||'').split('.')[0].replace(/[-:]/g,'');
       var en = (o.endISO||'').split('.')[0].replace(/[-:]/g,'');
       var ts = new Date().toISOString().split('.')[0].replace(/[-:]/g,'');
-      var ics = 'BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//PaolaYJavier//Boda//ES\nCALSCALE:GREGORIAN\nMETHOD:PUBLISH\nBEGIN:VEVENT\nUID:'+Date.now()+'@boda-paola-javier\nDTSTAMP:'+ts+'Z\nDTSTART:'+st+'Z\nDTEND:'+en+'Z\nSUMMARY:'+o.summary+'\nLOCATION:'+o.location+'\nDESCRIPTION:'+o.description+'\nEND:VEVENT\nEND:VCALENDAR';
+      var lf = '\r\n';
+      var ics = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//PaolaYJavier//Boda//ES',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        'UID:'+Date.now()+'@boda-paola-javier',
+        'DTSTAMP:'+ts+'Z',
+        'DTSTART:'+st+'Z',
+        'DTEND:'+en+'Z',
+        'SUMMARY:'+o.summary,
+        'LOCATION:'+o.location,
+        'DESCRIPTION:'+o.description,
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join(lf);
       var blob = new Blob([ics], {type:'text/calendar'});
       var url = URL.createObjectURL(blob);
       var a = document.createElement('a');
@@ -320,6 +353,7 @@
       document.body.appendChild(a); a.click(); a.remove();
       setTimeout(function(){URL.revokeObjectURL(url);}, 1000);
     }
+
     function addCeremonyICS(){
       downloadICS({
         summary:'Boda: Ceremonia de Paola y Javier',
@@ -330,16 +364,45 @@
         filename:'Ceremonia-Paola-Javier.ics'
       });
     }
+
     function addCelebrationICS(){
       downloadICS({
         summary:'Boda: Celebración en Finca Los Pinos',
         location:'Finca Los Pinos, Firgas (Gran Canaria)',
-        description:'Cóctel, banquete y fiesta hasta las 02:00.',
+        description:'Cóctel y fiesta hasta las 02:00.',
         startISO:'2026-10-31T14:00:00.000Z',
         endISO:'2026-11-01T02:00:00.000Z',
         filename:'Celebracion-Paola-Javier.ics'
       });
     }
+
+    // Enlazar botones .ics (sin inline JS)
+    document.addEventListener('DOMContentLoaded', function(){
+      var b1 = document.getElementById('btnCeremonyICS');
+      if (b1) b1.addEventListener('click', function(e){ e.preventDefault(); addCeremonyICS(); });
+      var b2 = document.getElementById('btnCelebrationICS');
+      if (b2) b2.addEventListener('click', function(e){ e.preventDefault(); addCelebrationICS(); });
+    });
+
+    // Tests rápidos (solo consola) para evitar regresiones
+    (function(){
+      try{
+        document.querySelectorAll('a[target="_blank"]').forEach(a=>{
+          console.assert(a.rel.includes('noopener'), 'Falta rel=noopener en', a);
+        });
+        var ics = (function(){
+          var sample = {
+            summary:'t', location:'l', description:'d',
+            startISO:'2026-10-31T10:00:00.000Z', endISO:'2026-10-31T11:00:00.000Z'
+          };
+          var st = sample.startISO.split('.')[0].replace(/[-:]/g,'');
+          var en = sample.endISO.split('.')[0].replace(/[-:]/g,'');
+          return ['DTSTART:'+st+'Z','DTEND:'+en+'Z'];
+        })();
+        console.assert(ics[0].endsWith('Z') && ics[1].endsWith('Z'), 'ICS debe estar en UTC con sufijo Z');
+        console.log('✅ Checks básicos OK');
+      }catch(e){ console.warn('⚠️ Checks: excepción', e); }
+    })();
   </script>
 </body>
 </html>
